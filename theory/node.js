@@ -43,13 +43,13 @@
 
 // - Event loop
 //node js runtime,  have callback queue, call stack and nodeapis which interact with libuv 
-// (libuv is package to handle async code written in C) event loop is in libuv which keeps on running as long as node js is running
+// (libuv is package to handle async code, written in C) event loop is in libuv which keeps on running as long as node js is running
 // any async function pops of stack and hand over to libuv which handle it in its thread pool (4) or give it to OS kernel
 // once done it is pushed into callback queue if the call stack is empty event loop takes the call back function
-// and push in callstack to execute this is what event loop is
+// and push in callstack to execute
 
 // - libuv has 4 threads can be checked by can be increased to 5 by process.env.UV_THREADPOOL_SIZE = 5
-// If increased more than cpus average time per call increases as threads gets juggled by os for cpu time 
+// If increased more than cpus average time per call increases as threads gets juggled by os, for cpu time 
 // const crypto = require('node:crypto');
 // process.env.UV_THREADPOOL_SIZE = 8;
 // console.time();
