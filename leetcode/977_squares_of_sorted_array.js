@@ -12,7 +12,7 @@ var sortedSquares = function(nums) {
         }
     }
 
-    let p2 = p1 - 1
+    let p2 = p1 - 1;
     while(p2 >= 0 || p1 < nums.length) {
         let nump2 = p2 >= 0 ? nums[p2] * nums[p2] : -1;
         let nump1 = p1 < nums.length ? nums[p1] * nums[p1] : -1; 
