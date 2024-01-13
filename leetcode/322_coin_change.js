@@ -4,20 +4,16 @@
  * @return {number}
  */
 var coinChange = function(coins, amount) {
-    coins.sort((a,b)=>a-b);
-    let noOfCoins = 0;
-    let flag = false;
-    for(let i = coins.length-1; i >= 0; i--){
-        let remainder = amount % coins[i];
-        if(remainder == 0) {
-            noOfCoins+=amount/coins[i];
-            flag = true;
-            break;
-        }
-        noOfCoins+=Math.floor(amount/coins[i]);
-        amount = remainder;
+    let dp = Array(amount + 1).fill(amount + 1);
+    dp[0] = 0;
+    for(let i = 1; i <= amount; i++) {
+        coins.forEach((c) => {
+            if(i - c >= 0) {
+                dp[i] = Math.min(dp[i], 1 + dp[i-c])
+            } 
+        })
     }
-    return flag ? noOfCoins : -1;
+    return dp[amount] != amount + 1 ? dp[amount] : -1;
 };
 
-coinChange([186,419,83,408],6249);
+console.log(coinChange([186,419,83,408],6249));
